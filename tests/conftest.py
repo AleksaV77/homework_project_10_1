@@ -1,14 +1,6 @@
 import pytest
 
 @pytest.fixture
-def test_no_number():
-    return "Нет номера карты или счета"
-
-@pytest.fixture
-def test_wrong_number():
-    return "Не правильный номер"
-
-@pytest.fixture
 def test_no_date():
     return "Отсутствует дата"
 
