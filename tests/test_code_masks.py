@@ -2,19 +2,37 @@ import pytest
 
 from src.masks import get_mask_account, get_mask_card_number
 
-def test_mask_card_number(test_no_number, test_wrong_number):
+@pytest.mark.parametrize("number, result", [
+    ("1596837868705199", "1596 83** **** 5199"),
+    ("6831982476737658", "6831 98** **** 7658"),
+    ("5999414228426353", "5999 41** **** 6353"),
+    ("15968378687051", "Не правильный номер"),
+    ("15968378687051211876", "Не правильный номер"),
+    ("159  78687051211876", "Не правильный номер"),
+    ("876", "Не правильный номер"),
+    (" ", "Нет номера карты или счета"),
+    ("", "Нет номера карты или счета")
+])
+
+def test_mask_card_number(number, result):
     """Тестирование правильности маскирования, отсутствуетвия и  нестандартные длины номеров карты"""
 
-    assert get_mask_card_number(7000792289606361) == "7000 79** **** 6361"
-    assert get_mask_card_number(700079228960636) == test_wrong_number
-    assert get_mask_card_number(" ") == test_no_number
-    assert get_mask_card_number("") == test_no_number
+    assert get_mask_card_number(number) == result
 
 
-def test_mask_account(test_no_number, test_wrong_number):
+@pytest.mark.parametrize("number_account, result_account", [
+    ("64686473678894779589", "**9589"),
+    ("49164736788947795893", "**5893"),
+    ("73654108430135874305", "**4305"),
+    ("64686473678894779", "Не правильный номер"),
+    ("64686473678894779290654", "Не правильный номер"),
+    ("64686473678894  90654", "Не правильный номер"),
+    ("6", "Не правильный номер"),
+    (" ", "Нет номера карты или счета"),
+    ("", "Нет номера карты или счета")
+])
+
+def test_mask_account(number_account, result_account):
     """Тестирование правильности маскирования, отсутствуетвия и  нестандартные длины номеров счета"""
 
-    assert get_mask_account(73654108430135874305) == "**4305"
-    assert get_mask_account(73654108430135874305755) == test_wrong_number
-    assert get_mask_account(" ") == test_no_number
-    assert get_mask_account("") == test_no_number
+    assert get_mask_account(number_account) == result_account
