@@ -30,4 +30,4 @@ def sort_by_date(my_lists, sort_date=True):
     return new_list
 
 
-print(sort_by_date(checklist, sort_date=True))
+print(sort_by_date(checklist, sort_date=False))

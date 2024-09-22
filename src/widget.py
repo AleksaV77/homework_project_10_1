@@ -20,7 +20,7 @@ def mask_account_card(number_card_or_account: str) -> str | None:
             return f"{get_mask_card_number(card_or_account_info[-1])}"
 
 
-print(mask_account_card("567"))
+print(mask_account_card("Maestro 1596837868705199"))
 
 
 def get_date(date: str) -> str | None:

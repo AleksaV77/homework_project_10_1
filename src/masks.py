@@ -14,7 +14,7 @@ def get_mask_card_number(user_card_number: Union[int, str]) -> Union[int, str]:
         return "Не правильный номер"
 
 
-print(get_mask_card_number("5999414228426353"))
+print(get_mask_card_number("599941422842635"))
 
 
 def get_mask_account(user_account_number: Union[int, str]) -> Union[int, str]:
