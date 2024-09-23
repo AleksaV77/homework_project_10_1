@@ -14,17 +14,17 @@ def log(filename: Any = None) -> Callable:
                     if result == sum(args):
                         with open(filename, "w") as file:
                             file.write(f"{func.__name__} ok")
-                except Exception as err:
-                    result = f"{func.__name__} error: {err.__class__.__name__}. Inputs:{args}, {kwargs}"
+                except BaseException as err:
                     with open(filename, 'w', encoding='utf-8') as file:
                         file.write(f'{func.__name__} error: {err.__class__.__name__}. Inputs:{args}, {kwargs}')
+                    raise BaseException(f"{func.__name__} error: {err.__class__.__name__}. Inputs:{args}, {kwargs}")
             else:
                 try:
                     result = func(*args, **kwargs)
                     if result == sum(args):
                         print(f"{func.__name__} ok")
-                except Exception as err:
-                    result = Exception(f"{func.__name__} error: {err.__class__.__name__}. Inputs:{args}, {kwargs}")
+                except BaseException as err:
+                    raise BaseException(f"{func.__name__} error: {err.__class__.__name__}. Inputs:{args}, {kwargs}")
             return result
         return timer
     return my_decorator

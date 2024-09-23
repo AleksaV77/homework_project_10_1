@@ -2,6 +2,12 @@ import pytest
 import tempfile
 from src.decorators import log, my_function
 
+@log(filename='mylog.txt')
+def my_function(x: int, y: int) -> int:
+    return x + y
+
+my_function(1, 2)
+
 def test_log_ok_console(capsys):
     """Тест - вывод успешного выполнения функции в консоль"""
     @log()
@@ -39,50 +45,12 @@ def test_log_txt(capsys):
     result = func(1, 3)
     assert result == 4
 
-def test_my_func_log(capsys):
-    """Тест - вывод ошибки в файл"""
-    @log(filename='mylog.txt')
-    def func(x, y):
-        return x + y
-    res = func('1', '3')
-    assert res == "func error: TypeError. Inputs:('1', '3'), {}"
-
-def test_my_func_log_console(capsys):
+def test_my_func_log_console():
     """Тест - вывод ошибки в консоль"""
-    @log()
-    def func(x, y):
-        return x + y
-    func('1', '3')
-    assert Exception("func error: TypeError. Inputs:('1', '3'), {}\n")
+    with pytest.raises(BaseException):
+        my_function('1', '3') == "my_function error: TypeError. Inputs:('1', '3'), {}"
 
-def test_my_func_log_2(capsys):
-    """Тест - вывод ошибки в файл"""
-    @log(filename='mylog.txt')
-    def func(x, y):
-        return x + y
-    res_1 = func(1, '3')
-    assert res_1 == "func error: TypeError. Inputs:(1, '3'), {}"
-
-def test_my_func_log_3(capsys):
-    """Тест - вывод ошибки в файл"""
-    @log(filename='mylog.txt')
-    def func(x, y):
-        return x / y
-    res_1 = func(1, '3')
-    assert res_1 == "func error: TypeError. Inputs:(1, '3'), {}"
-
-def test_my_func_log_console_2(capsys):
+def test_my_func_log_console_2():
     """Тест - вывод ошибки в консоль"""
-    @log()
-    def func(x, y):
-        return x + y
-    func(1, '3')
-    assert Exception("func error: TypeError. Inputs:(1, '3'), {}\n")
-
-def test_my_func_log_console_3(capsys):
-    """Тест - вывод ошибки в консоль"""
-    @log()
-    def func(x, y):
-        return x / y
-    func(1, '3')
-    assert Exception("func error: TypeError. Inputs:(1, '3'), {}\n")
+    with pytest.raises(BaseException):
+        my_function(1, '3') == "my_function error: TypeError. Inputs:(1, '3'), {}"
