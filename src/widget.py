@@ -1,5 +1,3 @@
-import re
-
 from src.masks import get_mask_account, get_mask_card_number
 
 
@@ -30,5 +28,6 @@ def get_date(date: str) -> str | None:
         return "Отсутствует дата"
     else:
         return f"{date[8:10]}.{date[5:7]}.{date[0:4]}"
+
 
 print(get_date("2024-03-11T02:26:18.671407"))
