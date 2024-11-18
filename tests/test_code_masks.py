@@ -17,8 +17,8 @@ from src.masks import get_mask_account, get_mask_card_number
         ("", "Нет номера карты или счета"),
     ],
 )
-def test_mask_card_number(number: str, result: str):
-    """Тестирование правильности маскирования, отсутствуетвия и нестандартные длины номеров карты"""
+def test_mask_card_number(number, result):
+    """Тестирование правильности маскирования, отсутствуетвия и  нестандартные длины номеров карты"""
 
     assert get_mask_card_number(number) == result
 
@@ -37,7 +37,7 @@ def test_mask_card_number(number: str, result: str):
         ("", "Нет номера карты или счета"),
     ],
 )
-def test_mask_account(number_account: str | int, result_account: str | int):
+def test_mask_account(number_account, result_account):
     """Тестирование правильности маскирования, отсутствуетвия и  нестандартные длины номеров счета"""
 
     assert get_mask_account(number_account) == result_account
