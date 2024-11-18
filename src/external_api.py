@@ -22,6 +22,7 @@ def sum_transaction(transaction: dict[str | float]) -> float:
             json_result = response.json()
             return float(json_result["result"])
 
+
 if __name__ == "__main__":
     file = "C:/Users/asurk/PycharmProjects/Homework_Project1/data/operations_3.json"
     json_file = list_financial_transactions(file)
