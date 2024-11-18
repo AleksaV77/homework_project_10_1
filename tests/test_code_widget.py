@@ -18,14 +18,13 @@ from src.widget import mask_account_card, get_date
         ("", "Нет номера карты или счета"),
     ],
 )
-
-def test_mask_account_card(string: str, expected_result:str):
+def test_mask_account_card(string, expected_result):
     """Тест на тип маскировки карты или счета и некорректных входных данных"""
 
     assert mask_account_card(string) == expected_result
 
 
-def test_get_date(test_no_date: str):
+def test_get_date(test_no_date):
     """Тестирование правильности преобразования и отсутствие даты"""
 
     assert get_date("2024-03-11T02:26:18.671407") == "11.03.2024"
