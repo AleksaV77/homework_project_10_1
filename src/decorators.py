@@ -1,7 +1,9 @@
 import logging
 from functools import wraps
 from typing import Any, Callable
+
 logging.basicConfig(level=logging.INFO, filename='mylog.txt', filemode='w')
+
 
 def log(filename: Any = None) -> Callable:
     """Декоратор, который логирует начало и конец выполнения функции и результаты или возникшие ошибки."""
@@ -34,6 +36,5 @@ def log(filename: Any = None) -> Callable:
 def my_function(x: int, y: int) -> int:
     return x + y
 
+
 my_function(1, 2)
-
-
