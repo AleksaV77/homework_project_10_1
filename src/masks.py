@@ -50,12 +50,6 @@ def get_mask_account(user_account_number: Union[int, str]) -> Union[int, str]:
         logging.error("Не правильный номер")
         return "Не правильный номер"
 
-        new_user_account_number = f"**{user_account_number[-4:]}"
-    elif user_account_number == "" or user_account_number == " ":
-        new_user_account_number = "Нет номера карты или счета"
-    elif len(user_account_number) < 20 or len(user_account_number) > 20:
-        new_user_account_number = "Не правильный номер"
-
     return new_user_account_number
 
 
