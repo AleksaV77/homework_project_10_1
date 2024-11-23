@@ -1,6 +1,8 @@
 from unittest.mock import patch
-from src.external_api import sum_transaction
+
 from dotenv import load_dotenv
+
+from src.external_api import sum_transaction
 
 
 @patch("src.external_api.sum_transaction")
