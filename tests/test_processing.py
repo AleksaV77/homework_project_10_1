@@ -1,4 +1,4 @@
-from src.processing import filter_by_state, sort_by_date, checklist
+from src.processing import checklist, filter_by_state, sort_by_date
 
 
 def test_filter_by_state(test_by_state_1, test_by_state_2, test_no_by_state, test_by_state_3, test_by_state_4):
