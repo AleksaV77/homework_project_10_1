@@ -20,15 +20,14 @@ def filter_by_state(dictionaries: list[dict[str, Any]], state: str = "EXECUTED")
     return new_dictionaries
 
 
-print(filter_by_state(checklist, "AUTHORIZATION"))
-
-
-def sort_by_date(my_lists: Any, sort_date: bool = True) -> Any:
+def sort_by_date(my_lists: list[dict], sort_date: bool = True) -> list[dict]:
     """Функция возвращает новый список, отсортированный по дате"""
 
-    new_list = [sorted(my_lists, key=lambda x: x["date"], reverse=sort_date)]
+    new_list = sorted(my_lists, key=lambda x: x["date"], reverse=sort_date)
 
     return new_list
 
 
-print(sort_by_date(checklist, sort_date=False))
+if __name__ == "__main__":
+    print(filter_by_state(checklist, "AUTHORIZATION"))
+    print(sort_by_date(checklist, sort_date=False))
