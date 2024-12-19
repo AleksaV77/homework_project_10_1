@@ -6,7 +6,7 @@ logger = logging.getLogger()
 logging.basicConfig(
     level=logging.DEBUG,
     format="%(asctime)s: %(filename)s: %(levelname)s: %(message)s",
-    filename="../logs/utils.log",
+    filename="C:/Users/asurk/PycharmProjects/Homework_Project1/logs/utils.log",
     encoding="utf-8",
     filemode="w",
 )
@@ -25,5 +25,8 @@ def list_financial_transactions(file):
             return []
 
 
-file_operation = list_financial_transactions("C:/Users/asurk/PycharmProjects/Homework_Project1/data/operations_3.json")
-print(file_operation)
+if __name__ == "__main__":
+    file_operation = list_financial_transactions(
+        "C:/Users/asurk/PycharmProjects/Homework_Project1/data/operations.json"
+    )
+    print(file_operation)
